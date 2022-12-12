@@ -88,7 +88,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 try {
-                    Log.e("homeProduct", response.body().toString());
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     if (jsonObject.getString("res").equalsIgnoreCase("success")) {
@@ -124,7 +123,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 try {
-                    Log.e("showSlider", response.body().toString());
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     if (jsonObject.getString("res").equalsIgnoreCase("success")) {

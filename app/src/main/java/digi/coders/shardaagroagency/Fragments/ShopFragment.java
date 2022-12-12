@@ -1,5 +1,6 @@
 package digi.coders.shardaagroagency.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,7 +52,14 @@ public class ShopFragment extends Fragment {
     FloatingActionButton orders;
     EditText et_search;
     RadioGroup radioGroup;
-    String MainCategory="";
+    String MainCategory = "";
+    NestedScrollView nestedSV;
+    ArrayList<ShopProductModel> arrayList = new ArrayList<>();
+
+
+    int page = 1, limit = 2;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,6 +72,7 @@ public class ShopFragment extends Fragment {
         search = view.findViewById(R.id.search);
         et_search = view.findViewById(R.id.et_search);
         radioGroup = view.findViewById(R.id.radioGroup);
+        nestedSV = view.findViewById(R.id.nested);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         products.setLayoutManager(layoutManager);
@@ -70,15 +81,15 @@ public class ShopFragment extends Fragment {
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.all:
-                    MainCategory="";
+                    MainCategory = "";
                     getShopProduct();
                     break;
                 case R.id.seeds:
-                    MainCategory="Seeds";
+                    MainCategory = "Seeds";
                     getShopProduct();
                     break;
                 case R.id.pesticides:
-                    MainCategory="Pesticides";
+                    MainCategory = "Pesticides";
                     getShopProduct();
                     break;
                 default:
@@ -147,35 +158,57 @@ public class ShopFragment extends Fragment {
             }
         });
         getCartItems();
+
+        // adding on scroll change listener method for our nested scroll view.
+        nestedSV.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                // on scroll change we are checking when users scroll as bottom.
+                if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
+                    // in this method we are incrementing page number,
+                    // making progress bar visible and calling get data method.
+                    page++;
+//                    loadingPB.setVisibility(View.VISIBLE);
+                    getShopProduct();
+                }
+            }
+        });
+
         return view;
 
     }
 
     public void getShopProduct() {
-        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Authenticating...");
+        if (page > limit) {
+            // checking if the page number is greater than limit.
+            // displaying toast message in this case when page>limit.
+            Toast.makeText(getActivity(), "That's all the data..", Toast.LENGTH_SHORT).show();
+            // hiding our progress bar.
+//            loadingPB.setVisibility(View.GONE);
+            return;
+        }
+        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Loading...");
         GetData getData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
-        Call<JsonArray> call = getData.getShopProducts(MainCategory);
+        Call<JsonArray> call = getData.getShopProductsPagination(page, MainCategory);
         call.enqueue(
                 new retrofit2.Callback<JsonArray>() {
                     @Override
                     public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
 
                         try {
-                            Log.e("shop", response.body().toString());
                             JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             if (jsonObject.getString("res").equalsIgnoreCase("success")) {
 
                                 JSONArray jsonArray1 = jsonObject.getJSONArray("msg");
-                                ArrayList<ShopProductModel> arrayList = new ArrayList<>();
+                                limit = jsonObject.getInt("total_pages");
 
                                 for (int i = 0; i < jsonArray1.length(); i++) {
 
                                     JSONObject jsonObject1 = jsonArray1.getJSONObject(i);
-                                    arrayList.add(new Gson().fromJson(jsonObject1.toString(),ShopProductModel.class));
+                                    arrayList.add(new Gson().fromJson(jsonObject1.toString(), ShopProductModel.class));
 
                                 }
-
                                 shopProducts = new ShopProducts(arrayList, getActivity());
                                 products.setAdapter(shopProducts);
 

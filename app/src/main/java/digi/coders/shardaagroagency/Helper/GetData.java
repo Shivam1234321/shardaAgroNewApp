@@ -7,6 +7,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface GetData {
 
@@ -45,8 +46,8 @@ public interface GetData {
 
     @POST("register.php")
     @FormUrlEncoded
-    Call<JsonArray> resendotp (@Field("Mobile") String mobile,
-                              @Field("Flag") String flag );
+    Call<JsonArray> resendotp(@Field("Mobile") String mobile,
+                              @Field("Flag") String flag);
 
     @POST("login.php")
     @FormUrlEncoded
@@ -338,6 +339,14 @@ public interface GetData {
     @POST("product.php ")
     @FormUrlEncoded
     Call<JsonArray> getShopProducts(
+            @Field("MainCategory") String MainCategory
+
+    );
+
+    @POST("productPagination.php")
+    @FormUrlEncoded
+    Call<JsonArray> getShopProductsPagination(
+            @Query("page") int pageNo,
             @Field("MainCategory") String MainCategory
 
     );

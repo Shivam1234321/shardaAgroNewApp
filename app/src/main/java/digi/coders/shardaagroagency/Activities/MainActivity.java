@@ -286,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 try {
-                    Log.e("check version", response.body().toString());
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String res = jsonObject.getString("res");

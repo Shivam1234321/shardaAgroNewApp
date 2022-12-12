@@ -502,7 +502,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 try {
-                    Log.e("check maintanance", response.body().toString());
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String res = jsonObject.getString("res");
@@ -543,7 +542,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 try {
-                    Log.e("check version", response.body().toString());
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String res = jsonObject.getString("res");
@@ -553,12 +551,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         String Type = jsonObject1.getString("Type");
                         Constants.VideoLink = jsonObject1.getString("VideoLink");
                         Constants.UPI = jsonObject1.getString("UPI");
-                        Log.e("ver", "ver " + version_name + " | " + BuildConfig.VERSION_CODE);
                         try {
                             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 //                            String version = pInfo.versionName;   //version name
                             verCode = pInfo.versionCode;      //version code
-                            Log.e("ver", "ver " + version_name + " | " + verCode);
                             if (version_name > verCode) {
                                 final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(HomeActivity.this).create();
                                 View view = LayoutInflater.from(HomeActivity.this).inflate(R.layout.update_page, null);
