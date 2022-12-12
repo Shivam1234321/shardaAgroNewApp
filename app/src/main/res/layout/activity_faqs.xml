@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.FaqsActivity">
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/key_left"/>
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="FAQs"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/line1"
+        android:visibility="gone"
+        android:id="@+id/nested_faqs"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAQ"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="30dp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There is some question and answering related to this app that may solve your problem."
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/grey"
+                android:textSize="15dp"></TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/faqs"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/line1"
+        android:visibility="gone"
+        android:id="@+id/nested_call"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="@drawable/bg_for_category_items"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="#EDEDED">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/abeezee"
+                    android:text="Sharda Agro Agency"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Postal Branch Office\nOffice No-6, Vandana Complex\nNear Sani Mandir, Charhi, Daliganj,\nLucknow-226020"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"></TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/abeezee"
+                        android:text="Telephone No-"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text=" 0522 2742838"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/abeezee"
+                        android:text="H.O-"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text=" Dharamshala Churaha,"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Misrikh-261401,\nDistrict-Sitapur,U.P\nshardaagroagency.261001@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"></TextView>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_for_category_items"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/call_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <Button
+                    android:layout_width="30dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_local_phone_black_24dp"></Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="10dp"
+                    android:text="9305230787"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/mail_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical">
+                <Button
+                    android:layout_width="30dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_mail_black_24dp"></Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="10dp"
+                    android:text="info@shardaagroagency.com"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/whatsapp_lina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical">
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/whatsapp"></Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="10dp"
+                    android:text="9305230787"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_for_category_items"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abeezee"
+                android:text="Send Query"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"></TextView>
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="40dp"
+                android:hint="Your Name*"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_for_category_items"></EditText>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="40dp"
+                android:hint="Your Email*"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_for_category_items"></EditText>
+            <EditText
+                android:id="@+id/subject"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="40dp"
+                android:hint="Subject"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_for_category_items"></EditText>
+            <EditText
+                android:id="@+id/msg"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="90dp"
+                android:gravity="top"
+                android:paddingTop="10dp"
+                android:hint="Your Message*"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_for_category_items"></EditText>
+
+            <com.skydoves.elasticviews.ElasticButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/send"
+                android:background="@drawable/bg_for_category_items"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Send"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:button_duration="200"
+                app:button_scale="0.93"></com.skydoves.elasticviews.ElasticButton>
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/pay_amount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:layout_below="@id/line1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Pay Amount"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:text="Amount"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"></TextView>
+        <EditText
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="40dp"
+            android:hint="Enter Amount"
+            android:inputType="number"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_for_category_items"></EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:text="Amount Type"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"></TextView>
+        <Spinner
+            android:layout_width="match_parent"
+            android:spinnerMode="dropdown"
+            android:id="@+id/type"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_for_category_items"
+            android:layout_height="40dp">
+
+        </Spinner>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:text="Remark"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/remark"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="120dp"
+            android:hint="Enter Remark"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_for_category_items"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:text="Payment Method"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="20dp"
+            android:id="@+id/radioGroup">
+
+            <RadioButton
+                android:id="@+id/online"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  Online Payment"
+                android:textColor="@color/black"
+                android:button="@drawable/radio_btn"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/pay_wid_upi"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  Pay With UPI"
+                android:textColor="@color/black"
+                android:button="@drawable/radio_btn"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+
+
+        <com.skydoves.elasticviews.ElasticButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:button_duration="200"
+            android:id="@+id/pay_online"
+            app:button_scale="0.93"
+            android:text="Pay Online"
+            android:layout_margin="20dp"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corbners"
+            android:backgroundTint="@color/colorPrimary"/>
+    </LinearLayout>
+</RelativeLayout>

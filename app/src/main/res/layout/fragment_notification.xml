@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.NotificationFragment">
+   <LinearLayout
+       android:id="@+id/no_data"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/white"
+       android:visibility="gone"
+       android:orientation="vertical"
+       android:gravity="center">
+      <ImageView
+          android:layout_width="150dp"
+          android:layout_height="150dp"
+          android:backgroundTint="@color/colorPrimary"
+          android:background="@drawable/ic_notifications_black_24dp"></ImageView>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Sorry, No Notification Found !"
+          android:textStyle="bold"
+          android:fontFamily="sans-serif"
+          android:textColor="@color/colorPrimary"
+          android:textSize="20dp"></TextView>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="sans-serif"
+          android:paddingLeft="20dp"
+          android:layout_marginTop="10dp"
+          android:paddingRight="20dp"
+          android:gravity="center"
+          android:text="You have no Notification from the Admin, \nplease wait until the notification added by admin for You."
+          android:textColor="@color/colorPrimary"
+          android:textSize="12dp"></TextView>
+   </LinearLayout>
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:id="@+id/notification"
+       android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+</FrameLayout>

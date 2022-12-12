@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MyProfileActivity">
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/key_left"></Button>
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="My Profile"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"></TextView>
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/edit_icon"></Button>
+    </LinearLayout>
+    <fragment
+        android:layout_width="match_parent"
+        android:id="@+id/fragment"
+        android:name="digi.coders.shardaagroagency.Fragments.BlankFragment"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line1"></fragment>
+</RelativeLayout>

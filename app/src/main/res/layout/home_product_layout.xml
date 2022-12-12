@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/outline_border"
+    android:layout_margin="3dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/logo_sharda" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Abhishek bharaty"
+                    android:textSize="15dp"
+                    android:lines="2"
+                    android:maxLength="34"
+                    android:textColor="@color/colorPrimary"/>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/product_price_single"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="Rs. 00/-"
+                            android:textStyle="bold"
+                            android:textColor="@color/orange"
+                            android:textSize="15dp"/>
+                        <TextView
+                            android:id="@+id/product_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="Rs. 200/-"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
+                        <TextView
+                            android:id="@+id/netAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rs. 200/-"
+                            android:textSize="13dp"
+                            android:textColor="#434242"/>
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/out_of_stock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Out Of Stock"
+                            android:textSize="15sp"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/red"/>
+                    </LinearLayout>
+
+                    <com.skydoves.elasticviews.ElasticImageView
+                        android:id="@+id/cart_btn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:background="@drawable/round_red"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_shopping_cart_black_24dp">
+
+                    </com.skydoves.elasticviews.ElasticImageView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+</LinearLayout>

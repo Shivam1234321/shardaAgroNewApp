@@ -1,0 +1,145 @@
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:id="@+id/line"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:background="#D8D4FEC1"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/OrderID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"></TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#A40808"></View>
+
+        <TextView
+            android:id="@+id/productsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Description"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#5F5D5D"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"></TextView>
+
+        <TextView
+            android:id="@+id/dateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90/33/009930"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#AAA9A9"
+            android:textSize="12dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"></TextView>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        android:backgroundTint="#D8D4FEC1"
+        android:background="@drawable/triangle"></ImageView>
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/reply_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="13dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="15dp"
+            android:rotation="90"
+            android:layout_marginTop="-5dp"
+            android:layout_height="20dp"
+            android:backgroundTint="#D8E6E6E6"
+            android:background="@drawable/triangle"></ImageView>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:background="#D8E6E6E6"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Name"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#A40808"></View>
+
+            <TextView
+                android:id="@+id/reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification Description"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#5F5D5D"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"></TextView>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/33/009930"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#AAA9A9"
+                android:textSize="12dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"></TextView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

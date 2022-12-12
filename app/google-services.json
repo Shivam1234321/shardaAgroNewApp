@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "793153817116",
+    "firebase_url": "https://shardaagroagency-c2b77.firebaseio.com",
+    "project_id": "shardaagroagency-c2b77",
+    "storage_bucket": "shardaagroagency-c2b77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793153817116:android:e1a8234c64b6fbf3a2edd9",
+        "android_client_info": {
+          "package_name": "digi.coders.shardaagroagency"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793153817116-744bfis28urusd1lseim6sre001nqiqe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "digi.coders.shardaagroagency",
+            "certificate_hash": "9bc5a5dbb1249485ff729e5c3a469207f55e7519"
+          }
+        },
+        {
+          "client_id": "793153817116-njm0l117lbmoovvbbkvtf19muf8cqaan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_9hA3ejQwFfzXuaQuA7CRJKT1T7HuhuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793153817116-njm0l117lbmoovvbbkvtf19muf8cqaan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

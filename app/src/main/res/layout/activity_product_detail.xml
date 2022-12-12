@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProductDetailActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/line1"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/key_left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Details"
+            android:textSize="17dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:id="@+id/cart"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_shopping_cart_black_24dp"/>
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom"
+        android:layout_below="@id/line1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:id="@+id/viewPager"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#AACCFCAB"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/offers_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0% OFF"
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:background="#C4CAFEA6"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:gravity="center_vertical">
+
+                    <com.skydoves.elasticviews.ElasticImageView
+                        android:id="@+id/plus_btn"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        app:imageView_duration="200"
+                        app:imageView_scale="0.93"
+                        android:padding="7dp"
+                        android:background="@drawable/rounded_outline_bg"
+                        android:src="@drawable/plus">
+
+                    </com.skydoves.elasticviews.ElasticImageView>
+
+                    <TextView
+                        android:id="@+id/txt_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="#888787"> </TextView>
+                    <com.skydoves.elasticviews.ElasticImageView
+                        android:id="@+id/minus_btn"
+                        android:layout_width="25dp"
+                        app:imageView_duration="200"
+                        app:imageView_scale="0.93"
+                        android:layout_height="25dp"
+                        android:padding="7dp"
+                        android:background="@drawable/rounded_outline_bg"
+                        android:src="@drawable/minus">
+
+                    </com.skydoves.elasticviews.ElasticImageView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="brand"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:fontFamily="sans-serif"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="normal"
+                android:fontFamily="sans-serif"
+                android:layout_marginLeft="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#AACCFCAB"/>
+            <LinearLayout
+                android:id="@+id/ll_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="price"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/cutPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cutPrice"
+                    android:textColor="#585757"
+                    android:textSize="14dp"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/product_price_single"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="product_price_single"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp"
+                    android:gravity="end"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/you_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="you_save"
+                android:textColor="@color/orange"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:paddingVertical="5dp"
+                android:background="#AACCFCAB"/>
+            <LinearLayout
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category : "/>
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Category"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:paddingVertical="5dp"
+                android:background="#AACCFCAB"/>
+            <LinearLayout
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sub Category : "/>
+                <TextView
+                    android:id="@+id/sub_category"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Sub Category"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#AACCFCAB"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/desc"/>
+          </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.skydoves.elasticviews.ElasticButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="ADD TO CART"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            app:button_duration="200"
+            android:id="@+id/addCart"
+            app:button_scale="0.93"
+            android:background="@drawable/outline_border"/>
+
+        <LinearLayout
+            android:id="@+id/line_count"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:gravity="center">
+
+            <com.skydoves.elasticviews.ElasticImageView
+                android:id="@+id/minus"
+                android:layout_width="27dp"
+                app:imageView_duration="200"
+                app:imageView_scale="0.93"
+                android:layout_height="27dp"
+                android:padding="8dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/rounded_outline_bg"
+                android:src="@drawable/minus">
+
+            </com.skydoves.elasticviews.ElasticImageView>
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#fff"> </TextView>
+
+            <com.skydoves.elasticviews.ElasticImageView
+                android:id="@+id/plus"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                app:imageView_duration="200"
+                app:imageView_scale="0.93"
+                android:padding="7dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/rounded_outline_bg"
+                android:src="@drawable/plus">
+
+            </com.skydoves.elasticviews.ElasticImageView>
+
+
+        </LinearLayout>
+        <com.skydoves.elasticviews.ElasticButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="GO TO CART"
+            android:id="@+id/goCart"
+            app:button_duration="200"
+            app:button_scale="0.93"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/outline_border"/>
+    </LinearLayout>
+</RelativeLayout>

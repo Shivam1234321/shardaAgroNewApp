@@ -1,0 +1,93 @@
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/coupon_bg"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C566AF3A"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50 % off"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textSize="27dp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"></TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/desc"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Digicoders technology ptv. ltd., Nirala Nagar, Lucknow, Uttar Pradesh, 226020."></TextView>
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="564738293847654738"
+                android:textSize="10dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"></TextView>
+            <TextView
+                android:id="@+id/code"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ASC900"
+                android:padding="5dp"
+                android:layout_gravity="right"
+                android:background="@drawable/rectangle_dott"
+                android:textSize="17dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"></TextView>
+        </LinearLayout>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/round_red"
+            android:backgroundTint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-10dp"></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/round_red"
+            android:backgroundTint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-10dp"></TextView>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

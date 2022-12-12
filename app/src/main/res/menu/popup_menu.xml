@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/change_pass"
+        android:title="Change Password" />
+    <item
+        android:id="@+id/how_to_use"
+        android:title="How to Use" />
+    <item
+        android:id="@+id/share_app"
+        android:title="Share App"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"/>
+</menu>

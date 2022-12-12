@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activities.CartActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/line1"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/key_left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Cart"
+            android:textSize="17dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Cart (0 Items)"/>
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@id/calculation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line1"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/cart_items"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/calculation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/disc_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="@color/colorPrimary"
+                android:text="Discount Price"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/discount_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#3A3939"
+                android:textStyle="bold"
+                android:text="Rs. 0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="@color/colorPrimary"
+                android:text="Payable Price"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#3A3939"
+                android:textStyle="bold"
+                android:text="Rs. 0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/coupon_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="@color/colorPrimary"
+                android:text="Coupon Discount"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#3A3939"
+                android:textStyle="bold"
+                android:text="Rs. 345"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/remove_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:visibility="gone"
+            android:layout_gravity="right"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/red"
+            android:text="REMOVE COUPON"/>
+        <com.skydoves.elasticviews.ElasticLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_duration="200"
+            app:layout_scale="0.93"
+            android:layout_marginTop="5dp"
+            android:id="@+id/select_payment_option"
+            android:background="@drawable/rounded_corbners"
+            android:backgroundTint="@color/colorAccent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textColor="@color/white"
+                    android:text="PROCEED TO PAY"/>
+
+            </LinearLayout>
+        </com.skydoves.elasticviews.ElasticLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line1"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/ic_shopping_cart_black_24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="There is no Items to show in your cart. You have to continue shopping for add the items in the cart."
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"/>
+        <com.skydoves.elasticviews.ElasticButton
+            android:id="@+id/continue_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Continue Shopping"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textSize="15dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corbners"/>
+    </LinearLayout>
+</RelativeLayout>

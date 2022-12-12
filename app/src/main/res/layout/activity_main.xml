@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/root"
+    android:animateLayoutChanges="true"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MainActivity">
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/relay1"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo_sharda"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_alignParentBottom="true"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="-2dp"
+            android:layout_height="8dp" />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ralay2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo_sharda">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome "
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in to continue"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"/>
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:inputType="number|textNoSuggestions"
+            android:maxLength="10"
+            android:importantForAutofill="no"
+            android:textSize="16dp"
+            android:hint="Mobile"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:inputType="textPassword"
+            android:textSize="16dp"
+            android:hint="Password"/>
+
+        <TextView
+            android:id="@+id/forgot_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="right"
+            android:textColor="@color/black"
+            android:textSize="15dp"/>
+
+
+        <com.skydoves.elasticviews.ElasticButton
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_corbners"
+            android:layout_height="40dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            app:button_duration="200"
+            app:button_scale="0.93"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Login">
+        </com.skydoves.elasticviews.ElasticButton>
+        <com.skydoves.elasticviews.ElasticButton
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_corbners"
+            android:layout_height="40dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            app:button_duration="200"
+            app:button_scale="0.93"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Register Here">
+        </com.skydoves.elasticviews.ElasticButton>
+
+        <TextView
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help ?"
+            android:drawableTint="@color/colorPrimary"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_baseline_info_24"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="15dp"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ChangePassswordActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/line1"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/key_left"></Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:textSize="17dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"></TextView>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"
+            android:src="@drawable/logo_sharda"></de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Your Password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="10dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Old Password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="20dp"></TextView>
+        <EditText
+            android:id="@+id/old_pass"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            android:layout_margin="10dp"
+            android:hint="Your Old Password"
+            android:paddingLeft="10dp"
+            android:lines="1"
+            android:textSize="16dp"
+            android:backgroundTint="@color/colorPrimary"></EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your New Password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="0dp"></TextView>
+        <EditText
+            android:id="@+id/new_pass"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            android:layout_margin="10dp"
+           android:hint="Your New Password"
+            android:paddingLeft="10dp"
+            android:lines="1"
+            android:textSize="16dp"
+            android:backgroundTint="@color/colorPrimary"></EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm New Password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="0dp"></TextView>
+        <EditText
+            android:id="@+id/con_pass"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:inputType="textPassword"
+            android:hint="Confirm New Password"
+            android:paddingLeft="10dp"
+            android:textSize="16dp"
+            android:lines="1"
+            android:backgroundTint="@color/colorPrimary"></EditText>
+
+        <com.skydoves.elasticviews.ElasticButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/submit"
+            app:button_duration="200"
+            app:button_scale="0.93"
+            android:background="@drawable/rounded_corbners"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_margin="15dp"></com.skydoves.elasticviews.ElasticButton>
+    </LinearLayout>
+</RelativeLayout>

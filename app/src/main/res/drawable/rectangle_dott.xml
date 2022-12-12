@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/>
+            <solid android:color="@android:color/transparent"/>
+            <!--stroke create dot by 2dp width 2dp gap and 2dp height-->
+            <stroke
+                android:color="@color/white"
+                android:width="0.5dp"
+                android:dashWidth="5dp"
+                android:dashGap="2dp"
+                />
+        </shape>
+    </item>
+</selector>
