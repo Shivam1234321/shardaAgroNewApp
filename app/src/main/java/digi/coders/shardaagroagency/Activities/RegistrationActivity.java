@@ -1,5 +1,7 @@
 package digi.coders.shardaagroagency.Activities;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -25,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
@@ -32,6 +35,7 @@ import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.skydoves.elasticviews.ElasticButton;
 import com.skydoves.elasticviews.ElasticImageView;
@@ -39,12 +43,17 @@ import com.skydoves.elasticviews.ElasticImageView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import digi.coders.shardaagroagency.Helper.Constants;
 import digi.coders.shardaagroagency.Helper.GetData;
 import digi.coders.shardaagroagency.Helper.RetrofitInstance;
 import digi.coders.shardaagroagency.Helper.SharedPrefManager;
+import digi.coders.shardaagroagency.Model.CityModel;
+import digi.coders.shardaagroagency.Model.OrderDetails;
 import digi.coders.shardaagroagency.Model.UserDetails;
 import digi.coders.shardaagroagency.R;
 import digi.coders.shardaagroagency.databinding.ActivityRegistrationBinding;
@@ -67,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, shop_name, email, mobile, password, otp, address, gst;
     TextView resendOtp;
     Spinner state;
-    String State;
+    String State,City,PinCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,6 +177,63 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
         );
 
+        getCity();
+    }
+
+    void getCity(){
+        GetData getData= RetrofitInstance.getRetrofitInstance().create(GetData.class);
+        Call<JsonArray> call = getData.getCityList("city");
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
+                try {
+                    JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    String res = jsonObject.getString("res");
+                    if (res.equalsIgnoreCase("success")){
+
+                        Type type = new TypeToken<ArrayList<CityModel>>() {}.getType();
+
+                        List<CityModel> list =  new Gson().fromJson(jsonObject.getJSONArray("msg").toString(),type);
+                        List<String> cityList = new ArrayList<>();
+                        for(int i=0;i<list.size();i++){
+                            cityList.add(list.get(i).getCity());
+                        }
+
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, cityList);
+                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        binding.citySpinner.setAdapter(dataAdapter);
+                        binding.citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                ((TextView) binding.citySpinner.getSelectedView()).setTextColor(getResources().getColor(R.color.colorPrimary));
+                                City = binding.citySpinner.getSelectedItem().toString();
+                                Log.e(TAG, "onItemSelected: "+City );
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+
+
+                    }else {
+                        Toast.makeText(getApplicationContext(),jsonObject.getString("msg"),Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (Exception e){
+                    Log.e(TAG, "onResponse: "+e.getMessage());
+                }
+                
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
+
+            }
+        });
+
     }
 
     void validateUser() {
@@ -184,7 +250,7 @@ public class RegistrationActivity extends AppCompatActivity {
         Call<JsonArray> call = GetData.userRegistration(name.getText().toString(), shop_name.getText().toString(),
                 email.getText().toString(), mobile.getText().toString(),
                 address.getText().toString(), password.getText().toString(), "register", gst.getText().toString(), State,
-                binding.area.getText().toString(), binding.city.getText().toString());
+                binding.area.getText().toString(), City,binding.pincode.getText().toString());
         call.enqueue(new Callback<JsonArray>() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -246,9 +312,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void otpVerification() {
-
         final ProgressDialog pd = ProgressDialog.show(RegistrationActivity.this, "", "Loading...");
-
         GetData GetData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
         Call<JsonArray> call = GetData.verifyOTP(mobile.getText().toString(), otp.getText().toString(), "otp_match");
         call.enqueue(new Callback<JsonArray>() {

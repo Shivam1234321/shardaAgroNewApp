@@ -30,7 +30,8 @@ public interface GetData {
             @Field("gst") String gst,
             @Field("state") String state,
             @Field("area") String area,
-            @Field("city") String city
+            @Field("city") String city,
+            @Field("pincode") String pincode
     );
 
     @POST("reset_password.php")
@@ -67,6 +68,11 @@ public interface GetData {
     @POST("version.php")
     @FormUrlEncoded
     Call<JsonArray> homeProduct(
+            @Field("Flag") String flag);
+
+    @POST("version.php")
+    @FormUrlEncoded
+    Call<JsonArray> getCityList(
             @Field("Flag") String flag);
 
     @POST("version.php")
