@@ -76,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, shop_name, email, mobile, password, otp, address, gst;
     TextView resendOtp;
     Spinner state;
-    String State,City,PinCode;
+    String State, City, PinCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +100,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         resendOtp = findViewById(R.id.resend);
         resendOtp.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        resendOTP();
-                    }
-                }
+                v -> resendOTP()
         );
 
         parentLayout = findViewById(android.R.id.content);
@@ -126,15 +121,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
         );
         register.setOnClickListener(
-                new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onClick(View v) {
-                        if (i == 0) {
-                            validateUser();
-                        } else {
-                            otpVerification();
-                        }
+                v -> {
+                    if (i == 0) {
+                        validateUser();
+                    } else {
+                        otpVerification();
                     }
                 }
         );
@@ -157,22 +148,18 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
         back.setOnClickListener(
-                new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onClick(View v) {
-                        if (i == 1) {
-                            @SuppressLint({"NewApi", "LocalSuppress"}) TransitionSet set = new TransitionSet()
-                                    .addTransition(new Slide(Gravity.LEFT))
-                                    .setInterpolator(
-                                            new FastOutLinearInInterpolator());
-                            TransitionManager.beginDelayedTransition(view_group, set);
-                            user_details.setVisibility(View.VISIBLE);
-                            otp_line.setVisibility(View.GONE);
-                            i = 0;
-                        } else {
-                            finish();
-                        }
+                v -> {
+                    if (i == 1) {
+                        @SuppressLint({"NewApi", "LocalSuppress"}) TransitionSet set = new TransitionSet()
+                                .addTransition(new Slide(Gravity.LEFT))
+                                .setInterpolator(
+                                        new FastOutLinearInInterpolator());
+                        TransitionManager.beginDelayedTransition(view_group, set);
+                        user_details.setVisibility(View.VISIBLE);
+                        otp_line.setVisibility(View.GONE);
+                        i = 0;
+                    } else {
+                        finish();
                     }
                 }
         );
@@ -180,8 +167,8 @@ public class RegistrationActivity extends AppCompatActivity {
         getCity();
     }
 
-    void getCity(){
-        GetData getData= RetrofitInstance.getRetrofitInstance().create(GetData.class);
+    void getCity() {
+        GetData getData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
         Call<JsonArray> call = getData.getCityList("city");
         call.enqueue(new Callback<JsonArray>() {
             @Override
@@ -190,13 +177,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String res = jsonObject.getString("res");
-                    if (res.equalsIgnoreCase("success")){
+                    if (res.equalsIgnoreCase("success")) {
 
-                        Type type = new TypeToken<ArrayList<CityModel>>() {}.getType();
+                        Type type = new TypeToken<ArrayList<CityModel>>() {
+                        }.getType();
 
-                        List<CityModel> list =  new Gson().fromJson(jsonObject.getJSONArray("msg").toString(),type);
+                        List<CityModel> list = new Gson().fromJson(jsonObject.getJSONArray("msg").toString(), type);
                         List<String> cityList = new ArrayList<>();
-                        for(int i=0;i<list.size();i++){
+                        for (int i = 0; i < list.size(); i++) {
                             cityList.add(list.get(i).getCity());
                         }
 
@@ -208,7 +196,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 ((TextView) binding.citySpinner.getSelectedView()).setTextColor(getResources().getColor(R.color.colorPrimary));
                                 City = binding.citySpinner.getSelectedItem().toString();
-                                Log.e(TAG, "onItemSelected: "+City );
+                                Log.e(TAG, "onItemSelected: " + City);
                             }
 
                             @Override
@@ -218,14 +206,14 @@ public class RegistrationActivity extends AppCompatActivity {
                         });
 
 
-                    }else {
-                        Toast.makeText(getApplicationContext(),jsonObject.getString("msg"),Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                     }
 
-                }catch (Exception e){
-                    Log.e(TAG, "onResponse: "+e.getMessage());
+                } catch (Exception e) {
+                    Log.e(TAG, "onResponse: " + e.getMessage());
                 }
-                
+
             }
 
             @Override
@@ -250,16 +238,14 @@ public class RegistrationActivity extends AppCompatActivity {
         Call<JsonArray> call = GetData.userRegistration(name.getText().toString(), shop_name.getText().toString(),
                 email.getText().toString(), mobile.getText().toString(),
                 address.getText().toString(), password.getText().toString(), "register", gst.getText().toString(), State,
-                binding.area.getText().toString(), City,binding.pincode.getText().toString());
+                binding.area.getText().toString(), City, binding.pincode.getText().toString());
         call.enqueue(new Callback<JsonArray>() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                 // SharedPrefManager.getInstance(getApplicationContext()).userLogin(response.body());
                 try {
-
+                    Log.e(TAG, "onResponse: reg "+response.body().toString() );
                     JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
-
                     JSONObject jsonObject1 = jsonArray.getJSONObject(0);
                     if (jsonObject1.getString("res").equalsIgnoreCase("success")) {
                         @SuppressLint({"NewApi", "LocalSuppress"}) TransitionSet set = new TransitionSet()
@@ -296,7 +282,8 @@ public class RegistrationActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
+                Log.e(TAG, "onFailure: t "+t.getMessage() );
                 pd.dismiss();
                 Snackbar.make(parentLayout, t.getMessage().toString(), Snackbar.LENGTH_LONG)
                         .setAction("CLOSE", new View.OnClickListener() {

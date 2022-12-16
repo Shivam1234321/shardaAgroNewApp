@@ -87,8 +87,7 @@ public class HomeProducts extends RecyclerView.Adapter<HomeProducts.ViewHolder> 
         holder.cart_btn.setOnClickListener(
                 v -> addToCart(productModels.get(position))
         );
-        holder.card.setOnClickListener(                v -> {
-
+        holder.card.setOnClickListener(v -> {
                     ProductDetailActivity.shopProductModel = productModels.get(position);
                     Intent intent = new Intent(ctx, ProductDetailActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

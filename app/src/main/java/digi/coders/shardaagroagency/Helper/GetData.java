@@ -290,7 +290,8 @@ public interface GetData {
             @Field("gst_file") String gst_file,
             @Field("State") String State,
             @Field("City") String City,
-            @Field("Area") String Area
+            @Field("Area") String Area,
+            @Field("pincode") String pincode
     );
 
     @POST("checkout.php")
@@ -353,7 +354,8 @@ public interface GetData {
     @FormUrlEncoded
     Call<JsonArray> getShopProductsPagination(
             @Query("page") int pageNo,
-            @Field("MainCategory") String MainCategory
+            @Field("MainCategory") String MainCategory,
+            @Field("searchText") String searchText
 
     );
 

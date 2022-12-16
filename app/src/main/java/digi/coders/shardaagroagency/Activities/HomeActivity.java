@@ -64,12 +64,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView name, email;
     CircleImageView profile;
     ImageView search,notification;
+
     public static int verCode;
+
     public static  BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.layout_drawer);
         search = findViewById(R.id.search);

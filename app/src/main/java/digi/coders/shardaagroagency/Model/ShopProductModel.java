@@ -3,11 +3,11 @@ package digi.coders.shardaagroagency.Model;
 public class ShopProductModel {
 
     String ProductId,ProductName,ProductTitle,ProductCategory,ProductSubCategory,ProductBrand,SinglePrice,ProductOfferPrice,ProductPrice,
-            ProductDiscount,ProductImage1,ProductImage2,ProductImage3,ProductDescription,CartQuantity,Stock,NotifyStatus;
+            ProductDiscount,ProductImage1,ProductImage2,ProductImage3,ProductDescription,CartQuantity,Stock,NotifyStatus,unit,altunit;
 
     public ShopProductModel(String productId, String productName, String productTitle, String productCategory, String productSubCategory, String productBrand,
                             String singlePrice, String productOfferPrice, String productPrice, String productDiscount, String productImage1, String productImage2,
-                            String productImage3, String productDescription, String cartQuantity,String stock,String notifyStatus) {
+                            String productImage3, String productDescription, String cartQuantity,String stock,String notifyStatus,String Unit,String Altunit) {
         ProductId = productId;
         ProductName = productName;
         ProductTitle = productTitle;
@@ -25,6 +25,24 @@ public class ShopProductModel {
         CartQuantity = cartQuantity;
         Stock = stock;
         NotifyStatus = notifyStatus;
+        unit = Unit;
+        altunit = Altunit;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getAltunit() {
+        return altunit;
+    }
+
+    public void setAltunit(String altunit) {
+        this.altunit = altunit;
     }
 
     public String getNotifyStatus() {

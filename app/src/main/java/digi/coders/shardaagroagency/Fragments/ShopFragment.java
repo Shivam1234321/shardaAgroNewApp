@@ -1,5 +1,7 @@
 package digi.coders.shardaagroagency.Fragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -82,15 +84,15 @@ public class ShopFragment extends Fragment {
             switch (checkedId) {
                 case R.id.all:
                     MainCategory = "";
-                    getShopProduct();
+                    getShopProduct("");
                     break;
                 case R.id.seeds:
                     MainCategory = "Seeds";
-                    getShopProduct();
+                    getShopProduct("");
                     break;
                 case R.id.pesticides:
                     MainCategory = "Pesticides";
-                    getShopProduct();
+                    getShopProduct("");
                     break;
                 default:
 
@@ -98,7 +100,7 @@ public class ShopFragment extends Fragment {
             }
         });
 
-        getShopProduct();
+        getShopProduct("");
         products.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -129,8 +131,15 @@ public class ShopFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                shopProducts.filter(s.toString());
+//                shopProducts.filter(s.toString());
 
+                if (s.toString().length() > 2) {
+                    arrayList.clear();
+                    getShopProduct(s.toString());
+                }else if (s.toString().isEmpty()){
+                    arrayList.clear();
+                    getShopProduct("");
+                }
             }
 
             @Override
@@ -157,6 +166,7 @@ public class ShopFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MyOrdersActivity.class));
             }
         });
+
         getCartItems();
 
         // adding on scroll change listener method for our nested scroll view.
@@ -169,7 +179,7 @@ public class ShopFragment extends Fragment {
                     // making progress bar visible and calling get data method.
                     page++;
 //                    loadingPB.setVisibility(View.VISIBLE);
-                    getShopProduct();
+                    getShopProduct("");
                 }
             }
         });
@@ -178,7 +188,7 @@ public class ShopFragment extends Fragment {
 
     }
 
-    public void getShopProduct() {
+    public void getShopProduct(String searchText) {
         if (page > limit) {
             // checking if the page number is greater than limit.
             // displaying toast message in this case when page>limit.
@@ -187,14 +197,16 @@ public class ShopFragment extends Fragment {
 //            loadingPB.setVisibility(View.GONE);
             return;
         }
-        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Loading...");
+//        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Loading...");
         GetData getData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
-        Call<JsonArray> call = getData.getShopProductsPagination(page, MainCategory);
+        Call<JsonArray> call = getData.getShopProductsPagination(page, MainCategory, searchText);
         call.enqueue(
                 new retrofit2.Callback<JsonArray>() {
                     @Override
                     public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
 
+                        Log.e(TAG, "onResponse: getShopProduct " + searchText);
+                        Log.e(TAG, "onResponse: getShopProduct " + response.body().toString());
                         try {
                             JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
@@ -222,14 +234,13 @@ public class ShopFragment extends Fragment {
 
                         }
                         // Toast.makeText(getActivity(),response.body().toString(),Toast.LENGTH_LONG).show();
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
 
                     @Override
                     public void onFailure(Call<JsonArray> call, Throwable t) {
                         TastyToast.makeText(getActivity(), t.getMessage(), TastyToast.LENGTH_LONG, TastyToast.ERROR);
-
-                        pd.dismiss();
+//                        pd.dismiss();
                         //  Toast.makeText(getActivity(),t.getMessage().toString().toString(),Toast.LENGTH_LONG).show();
 
                     }

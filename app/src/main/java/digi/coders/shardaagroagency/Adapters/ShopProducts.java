@@ -62,6 +62,7 @@ public class ShopProducts extends RecyclerView.Adapter<ShopProducts.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ShopProducts.ViewHolder holder, final int position) {
+        ShopProductModel model = arraylist.get(position);
 
 
         if (productModels.get(position).getStock().equals("0")) {
@@ -81,9 +82,10 @@ public class ShopProducts extends RecyclerView.Adapter<ShopProducts.ViewHolder> 
 
 
         }
+
         holder.productName.setText(productModels.get(position).getProductName());
-        holder.product_price_single.setText("₹. " + productModels.get(position).getSinglePrice());
-        holder.productPrice.setText("₹. " + productModels.get(position).getProductPrice());
+        holder.product_price_single.setText("₹. " + productModels.get(position).getSinglePrice()+"/"+model.getUnit());
+        holder.productPrice.setText("₹. " + productModels.get(position).getProductPrice()+"/"+model.getAltunit());
         holder.ProductNetPrice.setText(Html.fromHtml("<strike>₹ " + productModels.get(position).getProductOfferPrice() + "</strike>"));
 
         Picasso.get().load(productModels.get(position).getProductImage1()).into(holder.image);

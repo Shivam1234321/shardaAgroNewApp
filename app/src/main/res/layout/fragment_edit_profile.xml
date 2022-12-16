@@ -127,7 +127,31 @@
             android:id="@+id/state"
             android:layout_width="match_parent"
             android:layout_marginVertical="10dp"
+
+            android:background="@drawable/border_bg_green"
             android:layout_height="40dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City/District"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"/>
+
+        <Spinner
+            android:id="@+id/city_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/border_bg_green"
+            android:textSize="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,8 +185,8 @@
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="City"
-                    android:id="@+id/city"
+                    android:hint="Pincode"
+                    android:id="@+id/pincode"
                     android:textSize="18dp"
                     android:textColor="@color/colorPrimaryDark" />
 

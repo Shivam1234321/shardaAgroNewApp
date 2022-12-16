@@ -187,11 +187,12 @@
                         android:textSize="14dp"/>
 
                     <Spinner
+                        android:layout_marginTop="5dp"
                         android:id="@+id/state"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:paddingLeft="10dp"
-                        android:backgroundTint="@color/colorPrimary"
+                        android:background="@drawable/border_bg_green"
                         android:textColorHint="@color/colorPrimary"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"/>
@@ -209,11 +210,12 @@
                     <Spinner
                         android:id="@+id/city_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:paddingLeft="10dp"
-                        android:backgroundTint="@color/colorPrimary"
+                        android:layout_marginTop="10dp"
                         android:textColorHint="@color/colorPrimary"
                         android:textColor="@color/colorPrimary"
+                        android:background="@drawable/border_bg_green"
                         android:textSize="16dp"/>
 
 

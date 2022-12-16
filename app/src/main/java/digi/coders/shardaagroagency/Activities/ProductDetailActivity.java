@@ -54,7 +54,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     Button back,cart;
     int currentPage = 0;
 
-
     TextView webView;
     public  static  ShopProductModel shopProductModel;
     public  static Activity ProductDetailActivity;

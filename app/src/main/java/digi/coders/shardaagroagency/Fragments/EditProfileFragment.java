@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -30,6 +31,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -42,6 +44,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,6 +57,7 @@ import digi.coders.shardaagroagency.Helper.FunctionClass;
 import digi.coders.shardaagroagency.Helper.GetData;
 import digi.coders.shardaagroagency.Helper.RetrofitInstance;
 import digi.coders.shardaagroagency.Helper.SharedPrefManager;
+import digi.coders.shardaagroagency.Model.CityModel;
 import digi.coders.shardaagroagency.R;
 import digi.coders.shardaagroagency.databinding.FragmentEditProfileBinding;
 import okhttp3.MediaType;
@@ -65,6 +69,7 @@ import retrofit2.Response;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 public class EditProfileFragment extends Fragment {
 
@@ -135,6 +140,7 @@ public class EditProfileFragment extends Fragment {
         });
 
         getProfile();
+        getCity();
         return view;
     }
 
@@ -169,7 +175,7 @@ public class EditProfileFragment extends Fragment {
                                 binding.googlePay.setText(jsonObject11.getJSONObject(0).getString("google_pay"));
                                 binding.panNo.setText(jsonObject11.getJSONObject(0).getString("pan_no"));
                                 binding.area.setText(jsonObject11.getJSONObject(0).getString("Area"));
-                                binding.city.setText(jsonObject11.getJSONObject(0).getString("City"));
+                                binding.pincode.setText(jsonObject11.getJSONObject(0).getString("pincode"));
                                 List<String> list = new ArrayList<>(Arrays.asList(Constants.state.split(",")));
                                 binding.state.setSelection(list.indexOf((jsonObject11.getJSONObject(0).getString("State"))));
 
@@ -220,17 +226,73 @@ public class EditProfileFragment extends Fragment {
         GooglePay = binding.googlePay.getText().toString();
         PanNo = binding.panNo.getText().toString();
         Area = binding.area.getText().toString();
-        City = binding.city.getText().toString();
 
         return true;
     }
 
+
+    void getCity() {
+        GetData getData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
+        Call<JsonArray> call = getData.getCityList("city");
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
+                try {
+                    JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    String res = jsonObject.getString("res");
+                    if (res.equalsIgnoreCase("success")) {
+
+                        Type type = new TypeToken<ArrayList<CityModel>>() {
+                        }.getType();
+
+                        List<CityModel> list = new Gson().fromJson(jsonObject.getJSONArray("msg").toString(), type);
+                        List<String> cityList = new ArrayList<>();
+                        for (int i = 0; i < list.size(); i++) {
+                            cityList.add(list.get(i).getCity());
+                        }
+
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, cityList);
+                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        binding.citySpinner.setAdapter(dataAdapter);
+                        binding.citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                ((TextView) binding.citySpinner.getSelectedView()).setTextColor(getResources().getColor(R.color.colorPrimary));
+                                City = binding.citySpinner.getSelectedItem().toString();
+                                Log.e(TAG, "onItemSelected: " + City);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+
+
+                    } else {
+                        Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Log.e(TAG, "onResponse: " + e.getMessage());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
+
+            }
+        });
+
+    }
     public void updateDetails() {
         final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Authenticating...");
         GetData getData = RetrofitInstance.getRetrofitInstance().create(GetData.class);
         Call<JsonArray> call = getData.updateProfileDetail("update_info", SharedPrefManager.getInstance(getActivity()).getUser().getId(),
                 Name, ShopName, Email, Mobile, Address, Gst, Licence, FirmName, ACNo, IFSC, GooglePay, PanNo,
-                encodedString1, encodedString2, encodedString3, State, City, Area);
+                encodedString1, encodedString2, encodedString3, State, City, Area,binding.pincode.getText().toString());
         call.enqueue(
                 new Callback<JsonArray>() {
                     @Override
