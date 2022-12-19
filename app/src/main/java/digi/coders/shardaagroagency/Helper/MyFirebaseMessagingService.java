@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -99,7 +100,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
            // if (SharedPrefManager.getInstance(getApplicationContext()).isLoggedIn()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 sendNotification(remoteMessage.getNotification().getBody(), remoteMessage.getNotification().getTitle());
+            }
 
         }
 
@@ -164,11 +167,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      *
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody,String title) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void sendNotification(String messageBody, String title) {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+//                PendingIntent.FLAG_IMMUTABLE);
 
         String channelId = getString(R.string.default_notification_channel_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -182,7 +186,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setPriority(Notification.PRIORITY_HIGH)
                         .setSound(defaultSoundUri)
                         .setStyle(new NotificationCompat.InboxStyle())
-                        .setContentIntent(pendingIntent)
+//                        .setContentIntent(pendingIntent)
                         .setVibrate(new long[0])
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                         .setChannelId(getString(R.string.default_notification_channel_id))

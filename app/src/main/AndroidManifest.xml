@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="digi.coders.shardaagroagency">
 
     <queries>
@@ -25,71 +26,72 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Activities.AllProduct"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.PaymentHistory"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.ChattingActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.MyRequirementActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.SellerQuoteActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat" />
+            android:theme="@style/Base.Theme.AppCompat"
+            android:exported="false"/>
         <activity
             android:name=".Activities.SearchActivity"
             android:configChanges="orientation|keyboard"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.FaqsActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.MyProfileActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.MyOredrsDeatils"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.MyOrdersActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.ProductDetailActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.CheckOutActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.CartActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.StockLive"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.CalulateQuantity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.ChangePassswordActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.HomeActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.ForgetPasswordActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.RegistrationActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.CouponActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.InviteFriendsActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true">
@@ -100,9 +102,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.razorpay.CheckoutActivity" android:exported="true"/>
+        <receiver android:name="com.razorpay.RzpTokenReceiver" android:exported="true"/>
+
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_jqJyngGEQbsk6k" />
+            android:value="rzp_test_jqJyngGEQbsk6k" tools:node="merge"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -119,7 +124,7 @@
         <service
             android:name=".Helper.MyFirebaseMessagingService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

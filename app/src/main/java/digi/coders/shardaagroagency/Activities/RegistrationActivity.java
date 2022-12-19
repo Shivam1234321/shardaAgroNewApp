@@ -46,14 +46,12 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import digi.coders.shardaagroagency.Helper.Constants;
 import digi.coders.shardaagroagency.Helper.GetData;
 import digi.coders.shardaagroagency.Helper.RetrofitInstance;
 import digi.coders.shardaagroagency.Helper.SharedPrefManager;
 import digi.coders.shardaagroagency.Model.CityModel;
-import digi.coders.shardaagroagency.Model.OrderDetails;
 import digi.coders.shardaagroagency.Model.UserDetails;
 import digi.coders.shardaagroagency.R;
 import digi.coders.shardaagroagency.databinding.ActivityRegistrationBinding;
